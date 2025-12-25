@@ -1,0 +1,319 @@
+.map-popup-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2147483646;
+  background: transparent;
+}
+
+.map-popup {
+  position: absolute;
+  width: 420px;
+  max-width: 90vw;
+  max-height: 350px;
+  padding: 10px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(16, 28, 50, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #e2e8f0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  font-family: 'Geologica', Inter, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+  z-index: 2147483647 !important;
+  animation: popupFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  transition: left 0.3s ease, right 0.3s ease, top 0.3s ease, width 0.3s ease, height 0.3s ease, border-radius 0.3s ease;
+  isolation: isolate;
+}
+
+.map-popup--sidebar {
+  right: 2px !important;
+  left: auto !important;
+  top: 2px !important;
+  width: 420px !important;
+  height: calc(100% - 4px) !important;
+  max-height: none !important;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Header */
+.map-popup__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.map-popup__title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+}
+
+.map-popup__header-buttons {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.map-popup__toggle-sidebar,
+.map-popup__close {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-popup__toggle-sidebar:hover,
+.map-popup__close:hover {
+  opacity: 0.8;
+}
+
+.map-popup__toggle-sidebar svg,
+.map-popup__close svg {
+  display: block;
+}
+
+/* Body with custom scrollbar */
+.map-popup__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  padding-right: 12px;
+}
+
+/* Custom Scrollbar */
+.map-popup__body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.map-popup__body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+
+.map-popup__body::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.6);
+  border-radius: 2px;
+}
+
+.map-popup__body::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.8);
+}
+
+/* Убираем кнопки вверх/вниз */
+.map-popup__body::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Firefox scrollbar */
+.map-popup__body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.6) rgba(0, 0, 0, 0.3);
+}
+
+/* Section */
+.map-popup__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.map-popup__section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(148, 163, 184, 0.8);
+  margin-bottom: 8px;
+  margin-top: 12px;
+}
+
+/* Field row */
+.map-popup__field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.map-popup__field:last-child {
+  border-bottom: none;
+}
+
+.map-popup__label {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.map-popup__value {
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 400;
+  text-align: right;
+  flex: 1;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Files section */
+.map-popup__files {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.map-popup__file-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: rgba(53, 69, 98, 0.3);
+  border-radius: 8px;
+  transition: background 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.map-popup__file-item:hover {
+  background: rgba(53, 69, 98, 0.5);
+}
+
+.map-popup__file-icon {
+  color: rgba(59, 130, 246, 0.7);
+  flex-shrink: 0;
+}
+
+.map-popup__file-details {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.map-popup__file-name {
+  font-size: 13px;
+  color: #e2e8f0;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.map-popup__file-size {
+  font-size: 11px;
+  color: rgba(148, 163, 184, 0.6);
+}
+
+.map-popup__edit-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Geologica', Inter, -apple-system, sans-serif;
+  background: linear-gradient(90deg, #1487C5 0%, #011AFE 100%);
+  transition: filter 0.2s, transform 0.1s, opacity 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.map-popup__edit-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.map-popup__edit-button:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.map-popup__edit-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.map-popup__edit-button--disabled,
+.map-popup__edit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(148, 163, 184, 0.3);
+  background-image: none;
+}
+
+.map-popup__edit-button--disabled:hover,
+.map-popup__edit-button:disabled:hover {
+  filter: none;
+  transform: none;
+}
+
+/* Photos section */
+.map-popup__photos-section {
+  margin-top: 12px;
+}
+
+.map-popup__photos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.map-popup__photo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.map-popup__photo-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.map-popup__photo-timestamp {
+  font-size: 11px;
+  color: rgba(148, 163, 184, 0.7);
+  text-align: left;
+}

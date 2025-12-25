@@ -1,0 +1,338 @@
+.category-statistics-widget {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+}
+
+.category-chart {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: rgba(16, 28, 50, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 12px 0 0 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  min-width: 0;
+  min-height: 0;
+}
+
+.category-chart__title {
+  font-family: 'Geologica', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  color: #afafb3;
+  margin-bottom: 8px;
+  padding: 0 16px;
+}
+
+.category-chart__content {
+  display: flex;
+  flex: 1;
+  gap: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  align-items: flex-start;
+  padding-top: 0;
+  margin-top: 8px; // Отступ от заголовка
+  min-width: 0;
+  min-height: 0;
+}
+
+.category-chart__donut {
+  flex: 0 0 auto;
+  width: 50%;
+  max-width: 380px;
+  height: 100%;
+  max-height: 380px;
+  aspect-ratio: 1;
+  // margin-top: -30px;
+  top: -25px;
+  margin-left: 2%;
+  min-width: 0;
+  min-height: 0;
+  // Улучшаем четкость SVG рендеринга
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  shape-rendering: geometricPrecision;
+
+  // Для SVG элементов внутри
+  svg {
+    shape-rendering: geometricPrecision;
+    text-rendering: geometricPrecision;
+  }
+
+  // Убираем размытие
+  canvas,
+  svg {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  // Скрываем tooltip
+  :global(.echarts-tooltip) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  // Анимация для элементов чарта
+  :global(svg path),
+  :global(svg circle),
+  :global(svg rect) {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+}
+
+.category-chart__legend-wrapper {
+  flex: 1;
+  display: flex;
+  gap: 0;
+  position: relative;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding-right: 10px;
+  overflow: visible; // Разрешаем отображение tooltip за пределами контейнера
+}
+
+.category-chart__legend {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: visible; // Изменено на visible для отображения tooltip
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE and Edge
+  padding: 10px;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari, Opera
+  }
+
+  // Стили для скролла
+  scroll-behavior: smooth;
+}
+
+.category-chart__legend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  transition: all 0.3s ease;
+  min-height: 40px;
+  box-sizing: border-box;
+
+  &--active {
+    background: rgb(78 204 242 / 11%);
+    border-color: rgba(78, 204, 242, 0.3);
+    transform: scale(1.02);
+    box-shadow: 0px 5px 6px rgb(71 203 242 / 10%);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // Для элементов без значения (последний элемент)
+  &:has(.category-chart__legend-badge:empty) {
+    .category-chart__legend-badge {
+      display: none;
+    }
+  }
+
+}
+
+.category-chart__legend-text {
+  font-family: 'Geologica', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #ffffff;
+  flex: 1;
+  margin-right: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-chart__legend-badge {
+  min-width: 46px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  font-family: 'Geologica', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.category-chart__scrollbar {
+  width: 8px;
+  height: 260px;
+  background: #1f2b42;
+  border-radius: 12px;
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.category-chart__scrollbar-thumb {
+  width: 4px;
+  background: #364d7e;
+  border-radius: 12px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  transition: transform 0.1s ease;
+  min-height: 20px;
+}
+
+.category-chart__bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom,
+      rgba(29, 37, 46, 0) 28.72%,
+      rgba(29, 37, 46, 1) 100%);
+  pointer-events: none;
+  border-radius: 0 0 20px 20px;
+}
+
+.category-chart__tooltip {
+  position: fixed;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: 'Geologica', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.4;
+  white-space: normal;
+  max-width: 300px;
+  min-width: 150px;
+  word-wrap: break-word;
+  z-index: 10000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+// Медиа-запросы для адаптивности
+@media (max-width: 768px) {
+  .category-chart__content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-chart__donut {
+    width: 100%;
+    max-width: 280px;
+    max-height: 280px;
+    height: auto;
+    margin-left: 0;
+    margin-top: 0;
+    top: 0;
+  }
+
+  .category-chart__legend-wrapper {
+    width: 100%;
+    padding-right: 0;
+    margin-top: 16px;
+    flex: 1 1 auto;
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-chart__donut {
+    max-width: 240px;
+    max-height: 240px;
+  }
+
+  .category-chart__title {
+    font-size: 14px;
+    padding: 0 12px;
+  }
+
+  .category-chart__legend-text {
+    font-size: 12px;
+  }
+
+  .category-chart__legend-wrapper {
+    min-height: 150px;
+  }
+}
+
+// Адаптивность по высоте
+@media (max-height: 600px) {
+  .category-chart__donut {
+    max-height: 200px;
+    max-width: 200px;
+    margin-top: -20px;
+    top: -15px;
+  }
+
+  .category-chart__title {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .category-chart__content {
+    margin-top: 4px;
+  }
+}
+
+@media (max-height: 400px) {
+  .category-chart__donut {
+    max-height: 150px;
+    max-width: 150px;
+    margin-top: -10px;
+    top: -5px;
+  }
+
+  .category-chart__legend-wrapper {
+    min-height: 100px;
+  }
+
+  .category-chart__legend-item {
+    padding: 6px 8px;
+  }
+
+  .category-chart__legend-text {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}

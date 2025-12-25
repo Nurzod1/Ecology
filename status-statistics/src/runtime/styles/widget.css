@@ -1,0 +1,170 @@
+.status-statistics-widget {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 18px;
+  border-radius: 20px;
+  /* Figma-like blurred transparent background */
+  background: rgba(16, 28, 50, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: relative;
+  z-index: 10000;
+}
+
+.status-statistics-widget.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.status-statistics-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.status-statistics-title {
+  font-family: "Geologica", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #afafb3;
+  text-align: center;
+}
+
+.status-statistics-columns {
+  flex: 1;
+  display: flex;
+  gap: 0;
+  padding-top: 8px;
+}
+
+.status-statistics-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Keep values pinned to the top while bars sit on the bottom */
+  justify-content: space-between;
+  padding: 14px 10px 10px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.status-statistics-column::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.1;
+}
+
+.status-statistics-column:first-child::before {
+  display: none;
+}
+
+.status-statistics-column:hover {
+  transform: translateY(-2px);
+}
+
+.status-selected {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 14px 30px rgba(0, 0, 0, 0.6);
+  border-radius: 14px;
+}
+
+.status-checked {
+  /* Keep column background mostly transparent; main color comes from bar */
+  background: transparent;
+}
+
+.status-approved {
+    background: transparent;
+}
+
+.status-rejected {
+    background: transparent;
+}
+
+.status-in-progress {
+    background: transparent;
+}
+
+/* Top text block inside each column */
+.status-statistics-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.status-statistics-value {
+  font-family: "Geologica", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #ffffff;
+}
+
+.status-statistics-unit {
+  margin-top: 2px;
+  font-family: "Geologica", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
+}
+
+.status-statistics-label {
+  margin-top: 4px;
+  font-family: "Geologica", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
+}
+
+/* Bottom bars that mimic the Figma shapes */
+.status-statistics-bar {
+  width: 100%;
+  /* Height will be controlled from React via inline style based on data */
+  border-radius: 22px 22px 0 0;
+  align-self: flex-end;
+  overflow: hidden;
+  /* Diagonal cut from top-left down to top-right (top -> bottom direction) */
+  clip-path: polygon(0 0, 100% 12%, 100% 100%, 0 100%);
+}
+
+.status-checked-bar {
+  background: linear-gradient(180deg, #2383f9 0%, #0052cc 100%);
+}
+
+.status-approved-bar {
+  background:
+    repeating-linear-gradient(-60deg, rgba(40, 190, 193, 0.1) 0 8px, transparent 8px 16px),
+    linear-gradient(180deg, #28bec1 0%, #038f92 100%);
+}
+
+.status-rejected-bar {
+  background:
+    repeating-linear-gradient(-60deg, rgba(193, 40, 98, 0.12) 0 8px, transparent 8px 16px),
+    linear-gradient(180deg, #c12862 0%, #8e0b40 100%);
+}
+
+.status-in-progress-bar {
+  background:
+    repeating-linear-gradient(-60deg, rgba(81, 116, 146, 0.14) 0 8px, transparent 8px 16px),
+    linear-gradient(180deg, #517492 0%, #33485b 100%);
+}
+
+

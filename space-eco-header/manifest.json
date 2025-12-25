@@ -1,0 +1,18 @@
+{
+  "name": "space-eco-header",
+  "label": "Space Eco Header",
+  "description": "Header widget matching Figma design with dark theme, search bar, and action buttons",
+  "version": "1.0.0",
+  "exbVersion": "1.11.0",
+  "author": "ArcGIS Experience Builder",
+  "icon": "icon.svg",
+  "properties": {
+    "hasSettingPage": false,
+    "hasStyle": true
+  },
+  "defaultSize": {
+    "width": 1920,
+    "height": 64
+  }
+}
+

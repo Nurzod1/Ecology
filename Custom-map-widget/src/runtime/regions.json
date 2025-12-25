@@ -1,0 +1,100 @@
+[
+  {
+    "uz-Cyrl": "Тошкент шаҳар",
+    "uz-Latn": "Toshkent shahar",
+    "ru": "Город Ташкент",
+    "region_soato": "1726",
+    "amcharts_id": "UZ-TK"
+  },
+  {
+    "uz-Cyrl": "Тошкент вилояти",
+    "uz-Latn": "Toshkent viloyati",
+    "ru": "Ташкентская область",
+    "region_soato": "1727",
+    "amcharts_id": "UZ-TO"
+  },
+  {
+    "uz-Cyrl": "Сирдарё вилояти",
+    "uz-Latn": "Sirdaryo viloyati",
+    "ru": "Сырдарьинская область",
+    "region_soato": "1724",
+    "amcharts_id": "UZ-SI"
+  },
+  {
+    "uz-Cyrl": "Жиззах вилояти",
+    "uz-Latn": "Jizzax viloyati",
+    "ru": "Джизакская область",
+    "region_soato": "1708",
+    "amcharts_id": "UZ-JI"
+  },
+  {
+    "uz-Cyrl": "Самарқанд вилояти",
+    "uz-Latn": "Samarqand viloyati",
+    "ru": "Самаркандская область",
+    "region_soato": "1718",
+    "amcharts_id": "UZ-SA"
+  },
+  {
+    "uz-Cyrl": "Фарғона вилояти",
+    "uz-Latn": "Farg'ona viloyati",
+    "ru": "Ферганская область",
+    "region_soato": "1730",
+    "amcharts_id": "UZ-FA"
+  },
+  {
+    "uz-Cyrl": "Наманган вилояти",
+    "uz-Latn": "Namangan viloyati",
+    "ru": "Наманганская область",
+    "region_soato": "1714",
+    "amcharts_id": "UZ-NG"
+  },
+  {
+    "uz-Cyrl": "Андижон вилояти",
+    "uz-Latn": "Andijon viloyati",
+    "ru": "Андижанская область",
+    "region_soato": "1703",
+    "amcharts_id": "UZ-AN"
+  },
+  {
+    "uz-Cyrl": "Қашқадарё вилояти",
+    "uz-Latn": "Qashqadaryo viloyati",
+    "ru": "Кашкадарьинская область",
+    "region_soato": "1710",
+    "amcharts_id": "UZ-QA"
+  },
+  {
+    "uz-Cyrl": "Сурхондарё вилояти",
+    "uz-Latn": "Surxondaryo viloyati",
+    "ru": "Сурхандарьинская область",
+    "region_soato": "1722",
+    "amcharts_id": "UZ-SU"
+  },
+  {
+    "uz-Cyrl": "Бухоро вилояти",
+    "uz-Latn": "Buxoro viloyati",
+    "ru": "Бухарская область",
+    "region_soato": "1706",
+    "amcharts_id": "UZ-BU"
+  },
+  {
+    "uz-Cyrl": "Навоий вилояти",
+    "uz-Latn": "Navoiy viloyati",
+    "ru": "Навоийская область",
+    "region_soato": "1712",
+    "amcharts_id": "UZ-NW"
+  },
+  {
+    "uz-Cyrl": "Хоразм вилояти",
+    "uz-Latn": "Xorazm viloyati",
+    "ru": "Хорезмская область",
+    "region_soato": "1733",
+    "amcharts_id": "UZ-XO"
+  },
+  {
+    "uz-Cyrl": "Қорақалпоғистон Республикаси",
+    "uz-Latn": "Qoraqalpogiston Respublikasi",
+    "ru": "Республика Каракалпакстан",
+    "region_soato": "1735",
+    "amcharts_id": "UZ-QR"
+  }
+]

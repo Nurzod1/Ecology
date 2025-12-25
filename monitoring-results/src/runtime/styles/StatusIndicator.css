@@ -1,0 +1,221 @@
+.status-indicator-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.status-indicator-track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  display: flex;
+  align-items: center;
+}
+
+/* Background line (inactive state) - blur effect */
+.status-indicator-line-background {
+  position: absolute;
+  height: 3px;
+  background-color: rgba(45, 62, 95, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  filter: blur(2px);
+  z-index: 1;
+}
+
+/* Progress line (active state) */
+.status-indicator-line {
+  position: absolute;
+  height: 3px;
+  background-color: #28BEC1;
+  z-index: 2;
+  transition: width 0.6s ease-in-out;
+  overflow: hidden;
+}
+
+/* Animation for the progress line - flowing wave that fades */
+.status-indicator-line.animated {
+  background: linear-gradient(
+    90deg,
+    rgba(40, 190, 193, 0.2) 0%,
+    rgba(40, 190, 193, 0.4) 15%,
+    rgba(40, 190, 193, 1) 30%,
+    rgba(40, 190, 193, 0.4) 45%,
+    rgba(40, 190, 193, 0.2) 60%,
+    rgba(40, 190, 193, 0) 75%,
+    rgba(40, 190, 193, 0) 100%
+  );
+  background-size: 300% 100%;
+  animation: lineWaveFlow 6s linear infinite;
+}
+
+@keyframes lineWaveFlow {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Ensure seamless connection between segments */
+.status-indicator-line.first-segment,
+.status-indicator-line.second-segment {
+  border-radius: 0;
+}
+
+.status-indicator-circle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Specific styling for each dot */
+.status-indicator-circle.uzcosmos {
+  z-index: 3;
+  animation: pulseBlue 2s ease-in-out infinite;
+}
+
+.status-indicator-circle.ekologiya {
+  z-index: 4;
+}
+
+/* Apply animations based on EKOLOGIYA value */
+.status-indicator-circle.ekologiya.animate-red {
+  animation: pulseRedEkologiya 2s ease-in-out infinite;
+}
+
+.status-indicator-circle.ekologiya.animate-yellow {
+  animation: pulseYellow 2s ease-in-out infinite;
+}
+
+.status-indicator-circle.ekologiya.animate-blue {
+  animation: pulseBlueEkologiya 2s ease-in-out infinite;
+}
+
+.status-indicator-circle.ekologiya.animate-cyan {
+  animation: pulseCyan 2s ease-in-out infinite;
+}
+
+.status-indicator-circle.ekologiya.animate-blue-gray {
+  animation: pulseBlueGray 2s ease-in-out infinite;
+}
+
+.status-indicator-circle.prokratura {
+  z-index: 5;
+  animation: pulseGray 2s ease-in-out infinite;
+}
+
+/* Inner circle for PROKRATURA */
+.status-indicator-inner-circle {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #0d1f3c;
+}
+
+/* Cyan/turquoise pulsing animation for UZCOSMOS (#28BEC1) */
+@keyframes pulseBlue {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(40, 190, 193, 0.7);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 0 0 10px rgba(40, 190, 193, 0);
+  }
+}
+
+/* Gray-blue pulsing animation for PROKRATURA */
+@keyframes pulseGray {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(122, 168, 224, 0.7);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 0 0 10px rgba(122, 168, 224, 0);
+  }
+}
+
+/* Red glow and pulse animation for false ekologiya value (#C12862) */
+@keyframes pulseRedEkologiya {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(193, 40, 98, 0.8), 0 0 20px rgba(193, 40, 98, 0.4);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+    box-shadow: 0 0 0 12px rgba(193, 40, 98, 0), 0 0 25px rgba(193, 40, 98, 0.6);
+  }
+}
+
+/* Red glow and pulse animation for warning status (legacy) */
+@keyframes pulseRed {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.8), 0 0 20px rgba(255, 59, 59, 0.4);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+    box-shadow: 0 0 0 12px rgba(255, 59, 59, 0), 0 0 25px rgba(255, 59, 59, 0.6);
+  }
+}
+
+/* Yellow glow and pulse animation for caution status */
+@keyframes pulseYellow {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.8), 0 0 20px rgba(255, 193, 7, 0.4);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+    box-shadow: 0 0 0 12px rgba(255, 193, 7, 0), 0 0 25px rgba(255, 193, 7, 0.6);
+  }
+}
+
+/* Bright blue animation for completed/pending EKOLOGIYA */
+@keyframes pulseBlueEkologiya {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 0 0 10px rgba(74, 144, 226, 0);
+  }
+}
+
+/* Cyan/turquoise glow and pulse animation for true ekologiya value (#28BEC1) */
+@keyframes pulseCyan {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(40, 190, 193, 0.8), 0 0 20px rgba(40, 190, 193, 0.4);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+    box-shadow: 0 0 0 12px rgba(40, 190, 193, 0), 0 0 25px rgba(40, 190, 193, 0.6);
+  }
+}
+
+/* Blue-gray glow and pulse animation for null ekologiya value (#517492) */
+@keyframes pulseBlueGray {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(81, 116, 146, 0.8), 0 0 20px rgba(81, 116, 146, 0.4);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+    box-shadow: 0 0 0 12px rgba(81, 116, 146, 0), 0 0 25px rgba(81, 116, 146, 0.6);
+  }
+}

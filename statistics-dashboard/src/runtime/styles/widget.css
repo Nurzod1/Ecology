@@ -1,0 +1,475 @@
+/* ============================================
+   CUSTOMIZATION SECTION
+   ============================================ */
+
+/* 
+  CARD COLORS - Change these to customize card appearance
+  All cards will use the same gradient by default
+  
+  Example colors:
+  - Purple: #667eea to #764ba2 (current)
+  - Blue: #4facfe to #00f2fe
+  - Pink: #f093fb to #f5576c
+  - Green: #43e97b to #38f9d7
+  - Orange: #fa709a to #fee140
+  - Red: #f54ea2 to #ff7676
+*/
+
+:root {
+  --card-gradient-start: #667eea;
+  --card-gradient-end: #764ba2;
+  --card-min-height: 78px;
+  --card-padding: 16px;
+  --card-border-radius: 16px;
+  --card-gap: 6px;
+}
+
+/* ============================================
+   MAIN WIDGET
+   ============================================ */
+
+/* Main Widget Container */
+.statistics-dashboard-widget {
+  width: 100%;
+  max-width: 100%;
+  opacity: 0;
+  animation: fadeInWidget 0.8s ease-out forwards;
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.statistics-dashboard-widget.visible {
+  opacity: 1;
+}
+
+/* Cards Container */
+.statistics-cards-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 78px;
+}
+
+/* Individual Card Styles */
+.statistics-card {
+  /* Use CSS variables for easy customization */
+  background: #101C324D;
+  
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Adjustable dimensions */
+  min-height: var(--card-min-height);
+  height: 78px;
+  width: 270px;
+  border: 1px solid #FFFFFF0D;
+  
+  /* Initial state */
+  transform: translateY(30px);
+  opacity: 0;
+  
+  /* Animations - sequential entrance, then continuous animations cycle */
+  animation: slideUpFadeIn 0.6s ease-out forwards;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sequential animation for cards - animations start one after another, then cycle repeats */
+.statistics-card:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.statistics-card:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.statistics-card:nth-child(3) {
+  animation-delay: 1.2s;
+}
+
+.statistics-card:nth-child(4) {
+  animation-delay: 1.8s;
+}
+
+/* Hover Effect for Cards - no animation changes on hover */
+.statistics-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Animated Background Overlay - sequential cycle */
+.statistics-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
+}
+
+/* Sequential shimmer delays - each card shimmers after the previous one */
+.statistics-card:nth-child(1)::before {
+  animation-delay: 0s;
+}
+
+.statistics-card:nth-child(2)::before {
+  animation-delay: 0.75s;
+}
+
+.statistics-card:nth-child(3)::before {
+  animation-delay: 1.5s;
+}
+
+.statistics-card:nth-child(4)::before {
+  animation-delay: 2.25s;
+}
+
+/* Keep shimmer animation consistent - no change on hover */
+
+/* Card Left Section */
+.statistics-card-left {
+  flex: 1;
+  z-index: 1;
+}
+
+/* Value Row - sequential cycle */
+.statistics-card-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+  animation: floatValue 3s ease-in-out infinite;
+}
+
+/* Sequential floatValue delays - each card floats after the previous one */
+.statistics-card:nth-child(1) .statistics-card-value-row {
+  animation-delay: 0s;
+}
+
+.statistics-card:nth-child(2) .statistics-card-value-row {
+  animation-delay: 0.75s;
+}
+
+.statistics-card:nth-child(3) .statistics-card-value-row {
+  animation-delay: 1.5s;
+}
+
+.statistics-card:nth-child(4) .statistics-card-value-row {
+  animation-delay: 2.25s;
+}
+
+/* No animation change on hover */
+
+/* Card Value */
+.statistics-card-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  line-height: 30px;
+  letter-spacing: 0;
+  transition: all 0.3s ease;
+}
+
+/* No animation change on hover for value */
+
+/* Card Unit */
+.statistics-card-unit {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+/* No animation change on hover for unit */
+
+/* Card Label */
+.statistics-card-label {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 16px;
+  max-width: 200px;
+  transition: all 0.3s ease;
+}
+
+/* No animation change on hover for label */
+
+/* Card Icon Container - sequential cycle */
+.statistics-card-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Sequential pulse delays - each icon pulses after the previous one */
+.statistics-card:nth-child(1) .statistics-card-icon {
+  animation-delay: 0s;
+}
+
+.statistics-card:nth-child(2) .statistics-card-icon {
+  animation-delay: 0.5s;
+}
+
+.statistics-card:nth-child(3) .statistics-card-icon {
+  animation-delay: 1s;
+}
+
+.statistics-card:nth-child(4) .statistics-card-icon {
+  animation-delay: 1.5s;
+}
+
+/* SVG Icon Styling */
+.statistics-card-icon svg {
+  width: 28.33px;
+  height: 28.33px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  transform-origin: center;
+}
+
+/* Icon rotation and scale on hover - applied to SVG to avoid conflict with pulse animation on container */
+.statistics-card:hover .statistics-card-icon svg {
+  transform: rotate(10deg) scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Loading State */
+.statistics-card-value:empty::after {
+  content: '...';
+  animation: loadingDots 1.5s infinite;
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+/* Fade In Widget */
+@keyframes fadeInWidget {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide Up and Fade In for Cards */
+@keyframes slideUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+@keyframes shimmerFast {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Floating Animation for Values */
+@keyframes floatValue {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes floatValueFast {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Pulse Animation for Icons */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+/* Rotate and Pulse on Hover */
+@keyframes rotatePulse {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.15);
+  }
+  100% {
+    transform: rotate(10deg) scale(1.1);
+  }
+}
+
+/* Loading Dots Animation */
+@keyframes loadingDots {
+  0%, 20% {
+    content: '.';
+  }
+  40% {
+    content: '..';
+  }
+  60%, 100% {
+    content: '...';
+  }
+}
+
+/* Glow Effect */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .statistics-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --card-padding: 20px;
+    --card-gap: 16px;
+  }
+  
+  .statistics-cards-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .statistics-card-value {
+    font-size: 32px;
+  }
+  
+  .statistics-card-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .statistics-card-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --card-padding: 16px;
+  }
+  
+  .statistics-dashboard-widget {
+    padding: 12px;
+  }
+  
+  .statistics-card-value {
+    font-size: 28px;
+  }
+  
+  .statistics-card-unit {
+    font-size: 16px;
+  }
+  
+  .statistics-card-label {
+    font-size: 13px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .statistics-card,
+  .statistics-card-icon,
+  .statistics-card-value-row,
+  .statistics-card::before {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .statistics-card:hover {
+    transform: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.statistics-card:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 3px;
+}
+
+/* Print styles */
+@media print {
+  .statistics-card {
+    break-inside: avoid;
+    box-shadow: none;
+    animation: none;
+  }
+  
+  .statistics-card::before {
+    display: none;
+  }
+}
