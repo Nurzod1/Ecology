@@ -8,8 +8,7 @@
   "icon": "icon.svg",
   "properties": {
     "hasSettingPage": true,
-    "hasStyle": true
+    "hasStyle": true,
+    "hasConfig": false
   }
 }
-
-

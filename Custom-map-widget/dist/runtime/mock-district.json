@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mock District Polygon",
+        "district": "1726262",
+        "mockId": "mock1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [69.2005, 41.2875],
+            [69.2105, 41.2875],
+            [69.2105, 41.2975],
+            [69.2005, 41.2975],
+            [69.2005, 41.2875]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mock District Polygon 2",
+        "district": "1727000",
+        "mockId": "mock2"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [69.2305, 41.3075],
+            [69.2405, 41.3075],
+            [69.2405, 41.3175],
+            [69.2305, 41.3175],
+            [69.2305, 41.3075]
+          ]
+        ]
+      }
+    }
+  ]
+}
+
+
